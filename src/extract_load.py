@@ -12,9 +12,13 @@ def search_commodities(simbolo, period='5d', interval='1d'):
     dados['ticker'] = simbolo
     return dados
 
-def search_all_data_commodities():
+def search_all_data_commodities(commodities):
     all_data = []
     for commodity in commodities:
         dados = search_commodities(commodity)
         all_data.append(dados)
     return pd.concat(all_data)
+
+if __name__ == "__main__":
+    data_concat = search_all_data_commodities(commodities=commodities)
+    print(data_concat)
